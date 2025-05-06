@@ -20,5 +20,5 @@ def main():
     persona1.mostrar_datos()
     persona2.mostrar_datos()
 
-if __name__ == "_main_":
+if __name__ == "__main__":
     main()
