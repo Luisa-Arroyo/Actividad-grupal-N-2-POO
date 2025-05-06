@@ -1,0 +1,24 @@
+# Ejercicio N°1
+class Persona:
+    def __init__(self, nombre, apellido, documento, año_nacimiento):
+        self.nombre = nombre
+        self.apellido = apellido
+        self.documento = documento
+        self.año_nacimiento = año_nacimiento
+
+    def mostrar_datos(self):
+        print(f"Nombre: {self.nombre}")
+        print(f"Apellido: {self.apellido}")
+        print(f"Documento: {self.documento}")
+        print(f"Año de nacimiento: {self.año_nacimiento}")
+        print("-" * 25)
+
+def main():
+    persona1 = Persona("Juan", "Diaz", "1023626210", 2005)
+    persona2 = Persona("Roxana", "Novoa", "1025890278", 2007)
+
+    persona1.mostrar_datos()
+    persona2.mostrar_datos()
+
+if __name__ == "_main_":
+    main()
