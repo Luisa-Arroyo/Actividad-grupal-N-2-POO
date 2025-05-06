@@ -1,0 +1,48 @@
+# Ejercicio N°2
+from enum import Enum
+
+class TipoPlaneta(Enum):
+    GASEOSO = 1
+    TERRESTRE = 2
+    ENANO = 3
+
+class Planeta:
+    def __init__(self, nombre=None, cantidad_satelites=0, masa=0.0, volumen=0.0,
+                 diametro=0, distancia_sol=0, tipo=TipoPlaneta.TERRESTRE, es_observable=False):
+        self.nombre = nombre
+        self.cantidad_satelites = cantidad_satelites
+        self.masa = masa
+        self.volumen = volumen
+        self.diametro = diametro
+        self.distancia_sol = distancia_sol  # en km
+        self.tipo = tipo
+        self.es_observable = es_observable
+
+    def imprimir(self):
+        print(f"Nombre del planeta: {self.nombre}")
+        print(f"Cantidad de satélites: {self.cantidad_satelites}")
+        print(f"Masa (kg): {self.masa}")
+        print(f"Volumen (km^3): {self.volumen}")
+        print(f"Diámetro (km): {self.diametro}")
+        print(f"Distancia al Sol (km): {self.distancia_sol}")
+        print(f"Tipo de planeta: {self.tipo.name}")
+        print(f"Es observable: {self.es_observable}")
+
+    def calcular_densidad(self):
+        if self.volumen == 0:
+            return 0
+        return self.masa / self.volumen
+
+    def es_planeta_exterior(self):
+        limite_ua_km = 149_597_870 * 3.4
+        return self.distancia_sol > limite_ua_km
+
+# Prueba del código
+if __name__ == "__main__":
+    tierra = Planeta("Tierra", 1, 5.9736e24, 1.08321e12, 12742, 150_000_000, TipoPlaneta.TERRESTRE, True)
+    jupiter = Planeta("Júpiter", 79, 1.899e27, 1.4313e15, 139820, 750_000_000, TipoPlaneta.GASEOSO, True)
+
+    for planeta in [tierra, jupiter]:
+        planeta.imprimir()
+        print(f"Densidad: {planeta.calcular_densidad():.2e} kg/km^3")
+        print(f"¿Es planeta exterior? {'Sí' if planeta.es_planeta_exterior() else 'No'}\n")
