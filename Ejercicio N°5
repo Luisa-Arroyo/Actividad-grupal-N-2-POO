@@ -1,0 +1,67 @@
+# Ejercicio N°5
+from enum import Enum
+#En este codigo tambien estan los ejercicios propuestos
+
+class TipoCuenta(Enum):
+    AHORROS = "AHORROS"
+    CORRIENTE = "CORRIENTE"
+
+class CuentaBancaria:
+    def __init__(self, nombresTitular, apellidosTitular, numeroCuenta, TipoCuenta, interesMensual):
+        self.nombresTitular = nombresTitular
+        self.apellidosTitular = apellidosTitular
+        self.numeroCuenta = int(numeroCuenta)
+        self.TipoCuenta = TipoCuenta
+        self.saldo = 0.0
+        self.interesMensual = interesMensual
+
+    def imprimirInfo(self):
+        print(f"Informacion de la cuenta bancaria:\nNombre del titular: {self.nombresTitular} {self.apellidosTitular}\nNumero de cuenta: {self.numeroCuenta}\nTipo de cuenta: {self.TipoCuenta.value}\nSaldo: ${self.saldo:.2f}\nTasa de interes mensual: {self.interesMensual}%")
+    def imprimirSaldo(self):
+        print(f"Tu saldo actual es: ${self.saldo:.2f}")
+
+    def consignar(self, cantidad):
+        if cantidad > 0:
+            self.saldo += cantidad
+            print(f"Consignacion exitosa\nNuevo saldo: ${self.saldo:.2f}")
+            return True
+        else:
+            print("El valor de la consignacion debe ser positivo")
+            return False
+
+    def retirar(self, cantidad):
+        if cantidad <= 0:
+            print("El valor a retirar debe ser mayor que cero")
+            return True
+        elif self.saldo < cantidad:
+            print("Saldo insuficiente")
+            return False
+        else:
+            self.saldo -= cantidad
+            print(f"Retiro exitoso\nSaldo actual: ${self.saldo:.2f}")
+            return False
+
+    def aplicarInteres(self):
+        self.saldo = self.saldo + (self.saldo * self.interesMensual)/100
+        print(f"Intereses aplicados\nSu saldo ahora es de: ${self.saldo:.2f}")
+
+def main():
+    cuenta1 = CuentaBancaria("Jesus", "Narvaez", 1234567, TipoCuenta.AHORROS, 3.5)
+
+    cuenta1.imprimirInfo()
+
+    print("\nConsignando $1000...")
+    cuenta1.consignar(1000)
+
+    print("\nRetirando $300...")
+    cuenta1.retirar(300)
+
+    print("\nAplicando tasa de interes mensual...")
+    cuenta1.aplicarInteres()
+
+    print("\nConsultando saldo final...")
+    cuenta1.imprimirSaldo()
+
+
+if __name__ == "__main__":
+    main()
