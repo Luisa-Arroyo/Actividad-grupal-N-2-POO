@@ -1,0 +1,129 @@
+# Ejercicio N°4
+import math
+#En este codigo tambien estan los ejercicios propuestos
+
+class Figura:
+    def calcular_area(self):
+        pass
+
+    def calcular_perimetro(self):
+        pass
+
+class Circulo(Figura):
+
+    def __init__(self, radio):
+        self.radio = radio
+
+    def calcular_area(self):
+        return math.pi * self.radio ** 2
+
+    def calcular_perimetro(self):
+        return 2 * math.pi * self.radio
+
+class Rectangulo(Figura):
+
+    def __init__(self, base, altura):
+        self.base = base
+        self.altura = altura
+
+    def calcular_area(self):
+        return self.base * self.altura
+
+    def calcular_perimetro(self):
+        return (self.base*2) + (self.altura*2)
+
+class Cuadrado(Figura):
+
+    def __init__(self, lado):
+        self.lado = lado
+
+    def calcular_area(self):
+        return self.lado*self.lado
+
+    def calcular_perimetro(self):
+        return self.lado*4
+
+class TrianguloRectangulo(Figura):
+
+    def __init__ (self, base, altura):
+        self.base = base
+        self.altura = altura
+
+    def calcular_area(self):
+        return (self.base * self.altura)/2
+
+    def calcular_hipotenusa(self):
+        return math.sqrt(self.base**2 + self.altura**2)
+
+    def calcular_perimetro(self):
+        return self.base + self.altura + self.calcular_hipotenusa()
+
+    def tipo_triangulo(self):
+        hipotenusa = self.calcular_hipotenusa()
+        lados = [hipotenusa, self.base, self.altura]
+
+        if lados[0] == lados[1] == lados[2]:
+            return "Equilatero"
+
+        if (lados[0] != lados[1]) and (lados[1] != lados[2]) and (lados[2] != lados[0]):
+            return "Escaleno"
+
+        else:
+            return "Isoseles"
+
+class Rombo(Figura):
+    def __init__(self, diagonalM, diagonalm, lado):
+        self.diagonalM = diagonalM
+        self.diagonalm = diagonalm
+        self.lado = lado
+
+    def calcular_area(self):
+        return (self.diagonalM * self.diagonalm)/2
+
+    def calcular_perimetro(self):
+        return self.lado * 4
+
+class Trapecio(Figura):
+    def __init__(self, baseM, basem, lado1, lado2, altura):
+        self.baseM = baseM
+        self.basem = basem
+        self.lado1 = lado1
+        self.lado2 = lado2
+        self.altura = altura
+
+    def calcular_area(self):
+        return ((self.baseM + self.basem) * self.altura)/2
+
+    def calcular_perimetro(self):
+        return self.baseM + self.basem + self.lado1 + self.lado2
+
+def main():
+
+    cir = Circulo(5)
+    print(f"Area del circulo: {cir.calcular_area():.2f}\
+              Perimetro del circulo: {cir.calcular_perimetro():.2f}")
+
+    rec = Rectangulo(3, 4)
+    print(f"Area del Rectangulo: {rec.calcular_area():.2f}\
+              Perimetro del Rectangulo: {rec.calcular_perimetro():.2f}")
+
+    cua = Cuadrado(2)
+    print(f"Area del cuadrado: {cua.calcular_area():.2f}\
+              Perimetro del cuadrado: {cua.calcular_perimetro():.2f}")
+
+    tri = TrianguloRectangulo(3, 4)
+    print(f"Area del triangulo: {tri.calcular_area():.2f}\
+        Perimetro del triangulo: {tri.calcular_perimetro():.2f}\
+        Hipotenusa del triangulo: {tri.calcular_hipotenusa():.2f}\
+        Tipo de triangulo: {tri.tipo_triangulo()}")
+
+    rom = Rombo(5, 4, 2)
+    print(f"Area del Rombo: {rom.calcular_area():.2f}\
+              Perimetro del Rombo: {rom.calcular_perimetro():.2f}")
+
+    tra = Trapecio(8, 6, 5, 5, 4)
+    print(f"Area del Trapecio: {tra.calcular_area():.2f}\
+              Perimetro del Trapecio: {tra.calcular_perimetro():.2f}")
+
+if __name__ == "__main__":
+    main()
