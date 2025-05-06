@@ -12,3 +12,16 @@ Walter Hugo Arboleda Mazo
 
 ### Grupo:
 3 (remota)
+
+### Actividad
+Entrega: realizar en Java o Python los ejercicios y entregar un archivo PDF con portada, código fuente de cada ejercicio, diagrama de clases de cada ejercicio y la url de cada ejercicio en Github.
+
+#### Desarollo
+El lenguaje de programación que estuvimos utilizando es Python.
+Como los enunciados de cada ejercicio son extensos decidimos solo poner el código con su respectivo diagrama de clase, aclarando en el GitHub en la descripción de cada ejercicio está el enunciado de cada código. 
+
+Ejercicios en GitHub: 
+
+Adicionalmente también, anexamos los códigos en Google Colab:(https://colab.research.google.com/drive/1zYS-c5HfkUN9vqs-18koXqfv4wrvI-We?usp=sharing)
+##
+## Gracias
